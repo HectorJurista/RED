@@ -1,0 +1,35 @@
+# autenticacion.py
+def verificar_credenciales(usuario, clave):
+    return usuario == "admin" and clave == "1234"
+python
+Copiar
+Editar
+# tokens.py
+def generar_token(usuario):
+    return f"token-{usuario}-XYZ"
+# test_login_integracion.py
+import unittest
+from autenticacion import verificar_credenciales
+from tokens import generar_token
+
+class TestLoginIntegracion(unittest.TestCase):
+    def test_login_y_token(self):
+        usuario = "admin"
+        clave = "1234"
+        
+        if verificar_credenciales(usuario, clave):
+            token = generar_token(usuario)
+        else:
+            token = None
+
+        self.assertIsNotNone(token)
+        self.assertTrue(token.startswith("token-admin"))
+
+if __name__ == '__main__':
+    unittest.main()
+✅ ¿Qué se evalúa?
+Que las credenciales sean validadas correctamente.
+
+Que, una vez autenticado, el token se genere correctamente.
+
+Se asegura que ambos módulos funcionen en conjunto, como lo harían en una situación real de inicio de sesión.
