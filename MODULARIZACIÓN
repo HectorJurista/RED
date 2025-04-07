@@ -1,0 +1,38 @@
+letras = [chr(i) for i in range(ord('a'), ord('x') + 1)]  # de 'a' a 'x'
+
+# Agregamos 'y' y 'z' más veces
+letras += ['y', 'z'] * 100  # suficiente para repetir en las 80 líneas
+
+for i in range(80):
+    print(letras[i])
+¿Qué hace este código?
+Crea una lista con las letras de la a a la x.
+
+Luego agrega muchas repeticiones de y y z para completar al menos 80 letras.
+
+Finalmente, imprime una letra por línea hasta completar 80 líneas.
+
+Si deseas que cada línea contenga una secuencia acumulativa (por ejemplo, la primera línea con a, la segunda con ab, la tercera con abc... hasta 80), avísame y te ajusto el código.
+import itertools
+import string
+
+letras = list(string.ascii_lowercase)  # ['a', 'b', ..., 'z']
+contador = 0
+max_combinaciones = 80
+
+longitud = 1
+while contador < max_combinaciones:
+    for combinacion in itertools.product(letras, repeat=longitud):
+        print(''.join(combinacion))
+        contador += 1
+        if contador == max_combinaciones:
+            break
+    longitud += 1
+🔍 ¿Qué hace este código?
+Usa itertools.product para generar todas las combinaciones posibles de letras.
+
+Comienza con combinaciones de 1 letra (a a z), luego 2 letras (aa a zz), luego 3, etc.
+
+Imprime exactamente 80 combinaciones, cortando el ciclo una vez alcanzado ese número.
+El siguiente código en Python genera combinaciones de letras del alfabeto en orden creciente, comenzando con todas las combinaciones de una sola letra (de a a z), luego con combinaciones de dos letras (de aa a zz), luego de tres, y así sucesivamente. Utiliza la función itertools.product para construir todas las combinaciones posibles con repetición, y un contador para asegurarse de imprimir exactamente 80 combinaciones. El ciclo se detiene automáticamente cuando se alcanzan las 80 secuencias, sin importar la longitud de la combinación en ese momento. Esta lógica permite cubrir el rango completo de combinaciones de forma ordenada, eficiente y controlada.
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, aa, ab, ac, ad, ae, af, ag, ah, ai, aj, ak, al, am, an, ao, ap, aq, ar, as, at, au, av, aw, ax, ay, az, ba, bb, bc, bd, be, bf, bg, bh, bi, bj, bk, bl, bm, bn, bo, bp, bq, br, bs, bt, bu, bv, bw, bx, by, bz
